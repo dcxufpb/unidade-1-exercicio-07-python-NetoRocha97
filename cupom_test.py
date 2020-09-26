@@ -39,6 +39,7 @@ def verifica_campo_obrigatorio_param(
 
 
 # Todas as variaveis preenchidas
+
 NOME_LOJA = "Loja 1"
 LOGRADOURO = "Log 1"
 NUMERO = 10
@@ -83,8 +84,8 @@ def test_loja_completa():
 
 def test_nome_vazio():
     verifica_campo_obrigatorio_param(
-        "O campo logradouro do endereço é obrigatório",
-        None,
+        "O campo nome da loja é obrigatório",
+        "",
         LOGRADOURO,
         NUMERO,
         COMPLEMENTO,
@@ -103,7 +104,7 @@ def test_logradouro_vazio():
     verifica_campo_obrigatorio_param(
         "O campo logradouro do endereço é obrigatório",
         NOME_LOJA,
-        None,
+        "",
         NUMERO,
         COMPLEMENTO,
         BAIRRO,
@@ -339,22 +340,27 @@ def test_inscricao_estadual_vazia():
 def test_exercicio2_customizado():
 
     # Defina seus próprios valores para as variáveis a seguir
-    nome_loja = ""
-    logradouro = ""
-    numero = 0
-    complemento = ""
-    bairro = ""
-    municipio = ""
-    estado = ""
-    cep = ""
-    telefone = ""
-    observacao = ""
-    cnpj = ""
-    inscricao_estadual = ""
+    nome_loja = "Loja CRVG"
+    logradouro = "R. Gen. Almério de Moura"
+    numero = 131
+    complemento = "Estádio"
+    bairro = "São Januário"
+    municipio = "Rio de Janeiro"
+    estado = "RJ"
+    cep = "20921-060"
+    telefone = "(21) 91898-1927"
+    observacao = "Obs 1"
+    cnpj = "12.111.333/12133-12"
+    inscricao_estadual = "123.456.789.000"
 
     # E atualize o texto esperado abaixo
     assert (
         cupom.dados_loja_param(nome_loja, logradouro, numero, complemento, bairro, municipio, estado, cep, telefone, observacao, cnpj, inscricao_estadual)
-        == """
-"""
-    )
+        == 
+"""Loja CRVG
+R. Gen. Almério de Moura, 131 Estádio
+São Januário - Rio de Janeiro - RJ
+CEP:20921-060 Tel (21) 91898-1927
+Obs 1
+CNPJ: 12.111.333/12133-12
+IE: 123.456.789.000""")
